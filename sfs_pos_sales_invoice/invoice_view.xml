@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_account_invoice_inherit_sfs2" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.sfs2</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Invoice']/group/label[@string='']" position="replace">
+                    <field name="direct_pay" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
+                </xpath>
+                <xpath expr="//button[@string='Validate']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@string='Validate']" position="after">
+                    <button name="validate_invoice" states="draft,proforma2" type="object" string="Validate" icon="gtk-go-forward"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

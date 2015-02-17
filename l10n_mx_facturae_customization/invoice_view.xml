@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_account_invoice_inherit_sfs" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.sfs</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@string='Print Invoice']" position="replace">
+                    <button name="%(l10n_mx_facturae_pac_sf.account_invoice_facturae_pac_sf_pdf)d" string="Print Invoice" type="action" icon="gtk-print" states="open,paid,proforma,sale,proforma2"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

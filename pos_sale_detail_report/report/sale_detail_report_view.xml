@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<openerp>
+    <data>
+
+
+        <report
+            id="pos_lines_detail"
+            string="Details of Sales"
+            model="pos.order"
+            name="pos.details_inherit"
+            auto="False"
+            multi="True"
+            menu="False"
+            rml="point_of_sale/report/pos_details.rml"
+             />
+
+
+
+    </data>
+</openerp>

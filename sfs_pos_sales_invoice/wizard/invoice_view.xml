@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_invoice_sales" model="ir.ui.view">
+            <field name="name">invoice.sale.form</field>
+            <field name="model">invoice.sale</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Sales">
+                    <field name="name"/>
+                    <field name="journal_id" />
+                    <field name="currency_id" />
+                    <group colspan="4" col="4">
+                    <field name="pos_order_ids" nolabel="1" domain="['|', ('partner_id', '=', name), ('partner_id', '=', False), ('state','=','paid'),
+                    			 ('pricelist_id.currency_id','=', currency_id),
+                    			 ('refund','=',False),]" />
+                    </group>
+                    <group colspan="4" col="4">
+                    <group col="2" colspan="2"/>
+                    <button icon="gtk-stop" special="cancel"
+                            string="Cancel" />
+                    <button name="invoice" string="Invoices"
+                            colspan="1" type="object" icon="gtk-apply" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_invoice_sales" model="ir.actions.act_window">
+             <field name="name">Invoice Sales</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoice.sale</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem parent="point_of_sale.menu_point_of_sale" action="action_invoice_sales" id="menu_action_invoice_sales" />
+
+    </data>
+</openerp>
